@@ -6,7 +6,7 @@
 
 /* On mouse-over, add a deeper shadow */
 .card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px 0 rgba(230,180,102,255);
 }
 
 /* Add some padding inside the card container */
@@ -23,13 +23,14 @@
 /* Add rounded corners to the top left and the top right corner of the image */
 img {
   border-radius: 5px 5px 0 0;
-  margin-right: 10%;
-  margin-left: 10%;
+  margin-right: 5%;
+  margin-left: 5%;
+  margin-bottom: 5%;
 }
 
 .maincontainer {
   margin-top: 7%;
-  margin-bottom: 7%;
+  margin-bottom: 4%;
 }
 
 
@@ -47,7 +48,16 @@ img {
 
 
 .topCard {
-  padding-bottom: 7%;
+  padding-bottom: 3%;
+}
+
+
+.navbar-toggler {
+  background-color: white;
+  
+}
+.navbar-toggler-icon {
+  background-color: rgba(82,40,144,255);
   
 }
 
@@ -58,6 +68,11 @@ img {
   border-radius: 5%;
   width: 50%;
   color: white;
+}
+
+.search-button:active {
+  box-shadow: 0 5px gba(230,180,102,255);
+  transform: translateY(4px);
 }
 
 nav {
@@ -73,4 +88,34 @@ nav {
 li, label {
   margin-top: 1%;
   margin-bottom: 1%;
+}
+
+
+.cardRow, .savedCards {
+  margin: 1%;
+  border-radius: 1%;
+
+  
+}
+
+.resultsRow {
+  justify-content: center;
+  color: rgba(82,40,144,255);
+}
+
+@media (max-width: 800px) {
+  /* CSS that should be displayed if width is equal to or less than 800px goes here */
+
+  .topCard {
+    padding-bottom: 3%;
+    margin: 5%;
+    
+  }
+
+  .savedCards {
+    width: 160px;
+    margin: 2%;
+    border-radius: 0%;
+  }
+
 }
