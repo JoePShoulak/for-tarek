@@ -29,7 +29,7 @@ img {
 }
 
 #cardImage {
-  width: 85%;
+  width: 85%, fit-content;
   padding-top: 3%;
 }
 
