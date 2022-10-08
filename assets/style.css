@@ -29,3 +29,15 @@ img {
   margin-top: 7%;
   margin-bottom: 7%;
 }
+
+
+#check {
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+}
+
+.zipcode {
+  display: flex;
+  padding: 0;
+}
