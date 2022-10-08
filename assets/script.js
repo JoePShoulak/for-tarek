@@ -4,8 +4,7 @@ let age = 'baby'
 let size = 'medium'
 let gender = 'male'
 let good_with_children = true
-let resultsArray = []
-let savedArray = []
+const savedArray = []
 
 //jQuery DOM element selectors
 let zipcodeInput = $('input:text')
@@ -31,6 +30,7 @@ console.log(genderInput.val())
 console.log(kidsInput.val())
 
 })
+
 
 
 
@@ -69,41 +69,49 @@ function getPetData(data) {
       return response.json();
     })
     .then(function (data) { 
-      // console.log(data) //consoles properly. it works
-      savedArray.push(data) //it pushes to empty array
+      // console.log(data.animals) //consoles properly. it works
+      savedArray.push(data.animals) //it pushes to empty array
+      console.log(savedArray[0][0])
+      console.log(savedArray[0][0].name)
+      console.log(savedArray[0].length)
+
+      generateCards()
+
+      // generateCards()
     })
 }
 
 
-console.log(savedArray)
-console.log(savedArray[0].animals) //Gives error for some reason
+// console.log(savedArray)
+// console.log(savedArray[0])
+// console.log(savedArray[0].animals) //Gives error for some reason
 // const parsedArray = JSON.parse(savedArray)
 
 function generateCards(savedArray) {
 
-const appendingContainer = $('.cardRow')
-
-for (let i = 0; i < savedArray[0].animals.length; i++) {
-  const element = savedArray[0].animals[i];
+  const appendingContainer = $('.cardRow')
   
-
-appendingContainer.append(` <div class="card column  savedCards text-align:center">
-<img id= "cardImage" src="${element.photos[0].small}" alt="Avatar" >
-<div class="container">
-  <h4><b>Pip</b></h4>
-  <p>Labrador Retriever</p>
-</div>
-<ul class="list-group list-group-flush">
-  <li class="list-group-item">Puppy</li>
-  <li class="list-group-item">38 Miles away</li>
-</ul>
-<div class="card-body">
-  <a href="#" class="card-link">Save</a>
-  <a href="#" class="card-link">Info</a>
-</div>
-</div>`)
-
-}
-}
+  for (let i = 0; i < savedArray[0].length; i++) {
+    const element = savedArray[0][i];
+    
+  
+  appendingContainer.append(` <div class="card column  savedCards text-align:center">
+  <img id= "cardImage" src="${element.photos[0].small}" alt="Avatar" >
+  <div class="container">
+    <h4><b>Pip</b></h4>
+    <p>Labrador Retriever</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Puppy</li>
+    <li class="list-group-item">38 Miles away</li>
+  </ul>
+  <div class="card-body">
+    <a href="#" class="card-link">Save</a>
+    <a href="#" class="card-link">Info</a>
+  </div>
+  </div>`)
+  
+  }
+  }
 
 // generateCards()

@@ -31,6 +31,7 @@ img {
 #cardImage {
   width: 85%, fit-content;
   padding-top: 3%;
+  border-radius: 5%;
 }
 
 .maincontainer {
