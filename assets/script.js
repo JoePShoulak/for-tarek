@@ -69,13 +69,15 @@ function getPetData(data) {
       return response.json();
     })
     .then(function (data) { 
-      // console.log(data)
-      savedArray.push(data)
+      // console.log(data) //consoles properly. it works
+      savedArray.push(data) //it pushes to empty array
     })
 }
 
+
 console.log(savedArray)
-console.log(savedArray[0].animals)
+console.log(savedArray[0].animals) //Gives error for some reason
+// const parsedArray = JSON.parse(savedArray)
 
 function generateCards(savedArray) {
 

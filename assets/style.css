@@ -112,6 +112,10 @@ border-radius: 2%;
   color: rgba(82,40,144,255);
 }
 
+.saved-group {
+  padding: 1%;
+}
+
 @media (max-width: 800px) {
   /* CSS that should be displayed if width is equal to or less than 800px goes here */
 
