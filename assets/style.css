@@ -15,7 +15,7 @@
 }
 
 .card {
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px 0 rgba(82,40,144,255);
   transition: 0.3s;
   border-radius: 5px; /* 5px rounded corners */
 }
@@ -23,6 +23,8 @@
 /* Add rounded corners to the top left and the top right corner of the image */
 img {
   border-radius: 5px 5px 0 0;
+  margin-right: 10%;
+  margin-left: 10%;
 }
 
 .maincontainer {
@@ -31,13 +33,44 @@ img {
 }
 
 
-#check {
+.check {
   display: flex;
   justify-content: space-between;
   padding: 0;
+  /* margin-top: 1%; */
 }
 
-.zipcode {
-  display: flex;
-  padding: 0;
+#innerCard {
+  padding-bottom: 3%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+
+.topCard {
+  padding-bottom: 7%;
+  
+}
+
+.search-button {
+  margin-top: 5%;
+  border-radius: 5%;
+  background-color: rgba(82,40,144,255);
+  border-radius: 5%;
+  width: 50%;
+  color: white;
+}
+
+nav {
+  background-color: rgba(82,40,144,255);
+  color: white;
+}
+.nav-link, .navbar-brand {
+  color: white;
+}
+
+
+
+li, label {
+  margin-top: 1%;
+  margin-bottom: 1%;
 }

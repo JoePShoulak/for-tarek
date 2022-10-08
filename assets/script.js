@@ -2,9 +2,33 @@
 let zipCode = 55432
 let age = 'baby'
 let size = 'medium'
-
 let gender = 'male'
 let good_with_children = true
+
+//jQuery DOM element selectors
+let zipcodeInput = $('input:text')
+let searchButton = $('.search-button')
+let ageInput = $('#ages')
+let sizeInput = $('#size')
+let genderInput = $('#gender')
+let kidsInput = $('#kids')
+
+
+
+//function to make default page "no prefrence", then save last search
+
+
+//event listner on search button
+
+searchButton.on('click', function(event){
+console.log(event.target)
+console.log(zipcodeInput.val())
+console.log(ageInput.val())
+console.log(sizeInput.val())
+console.log(genderInput.val())
+console.log(kidsInput.val())
+
+})
 
 
 
@@ -27,7 +51,7 @@ function getToken() {
     })
 }
 
-getToken();
+// getToken();
 
 
 //Getting pet data in a json object format
