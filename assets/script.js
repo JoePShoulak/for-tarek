@@ -4,6 +4,8 @@ let age = 'baby'
 let size = 'medium'
 let gender = 'male'
 let good_with_children = true
+let resultsArray = []
+let savedArray = []
 
 //jQuery DOM element selectors
 let zipcodeInput = $('input:text')
@@ -46,12 +48,13 @@ function getToken() {
       return response.json();
     })
     .then(function (data) {
-      console.log(data)
+      // console.log(data)
       getPetData(data)
+      
     })
 }
 
-// getToken();
+getToken();
 
 
 //Getting pet data in a json object format
@@ -66,6 +69,39 @@ function getPetData(data) {
       return response.json();
     })
     .then(function (data) { 
-      console.log(data)
+      // console.log(data)
+      savedArray.push(data)
     })
 }
+
+console.log(savedArray)
+console.log(savedArray[0].animals)
+
+function generateCards(savedArray) {
+
+const appendingContainer = $('.cardRow')
+
+for (let i = 0; i < savedArray[0].animals.length; i++) {
+  const element = savedArray[0].animals[i];
+  
+
+appendingContainer.append(` <div class="card column  savedCards text-align:center">
+<img id= "cardImage" src="${element.photos[0].small}" alt="Avatar" >
+<div class="container">
+  <h4><b>Pip</b></h4>
+  <p>Labrador Retriever</p>
+</div>
+<ul class="list-group list-group-flush">
+  <li class="list-group-item">Puppy</li>
+  <li class="list-group-item">38 Miles away</li>
+</ul>
+<div class="card-body">
+  <a href="#" class="card-link">Save</a>
+  <a href="#" class="card-link">Info</a>
+</div>
+</div>`)
+
+}
+}
+
+// generateCards()

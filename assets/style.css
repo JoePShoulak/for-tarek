@@ -28,6 +28,12 @@ img {
   margin-bottom: 5%;
 }
 
+#cardImage {
+  width: 85%;
+  align-items: center;
+  padding-top: 5%;
+}
+
 .maincontainer {
   margin-top: 7%;
   margin-bottom: 4%;
@@ -94,8 +100,11 @@ li, label {
 .cardRow, .savedCards {
   margin: 1%;
   border-radius: 1%;
+}
 
-  
+.savedCards {
+width: 200px;
+border-radius: 2%;
 }
 
 .resultsRow {
@@ -115,7 +124,8 @@ li, label {
   .savedCards {
     width: 160px;
     margin: 2%;
-    border-radius: 0%;
+    border-radius: 2%;
+    text-align: left;
   }
 
 }
