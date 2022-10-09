@@ -23,6 +23,14 @@ let kidsInput = $('#kids')
 
 searchButton.on('click', function(event){
 console.log(event.target)
+
+
+zipCode = zipcodeInput.val()
+age = ageInput.val()
+size = sizeInput.val()
+gender = genderInput.val()
+good_with_children = kidsInput.val()
+
 console.log(zipcodeInput.val())
 console.log(ageInput.val())
 console.log(sizeInput.val())
@@ -84,19 +92,18 @@ function getPetData(data) {
     
       let appendingContainer = $('.cardRow')
       
+      
       for (let i = 0; i < savedArray[0].length; i++) {
         const element = savedArray[0][i];
         
-        
-      
       appendingContainer.append(` <div class="card column  savedCards text-align:center">
-      <img id= "cardImage" src="${element.primary_photo_cropped.small}" alt="Avatar" >
+      <img id= "cardImage" src= " ${element.primary_photo_cropped.large} " alt="dog image" >
       <div class="container saved-group">
-        <h4 class="saved-group" ><b>${element.name.length < 10 ? element.name : element.name.slice(0, 10)+'...'}</b></h4>
+        <h4 class="saved-group" ><b>${element.name.length < 8 ? element.name : element.name.slice(0, 8)+'...'}</b></h4>
         <p class="saved-group2" >${element.breeds.primary}</p>
       </div>
       <ul class="list-group saved-group list-group-flush">
-        <li class="list-group-item saved-group">${ element.age === 'baby' ? 'puppy' : element.age } </li>
+        <li class="list-group-item saved-group">${element.age} </li>
         <li class="list-group-item saved-group">${element.distance.toFixed(0)} Miles away</li>
       </ul>
       <div class="card-body saved-group">
