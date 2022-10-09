@@ -81,7 +81,7 @@ function getPetData(data) {
     .then(function (data) { 
       // console.log(data.animals) //consoles properly. it works
       savedArray.push(data.animals) //it pushes to empty array
-      console.log(savedArray[0][0])
+      console.log(savedArray[0][1].primary_photo_cropped)
       console.log(savedArray[0][0].name)
       console.log(savedArray[0].length)
 
@@ -95,6 +95,10 @@ function getPetData(data) {
       
       for (let i = 0; i < savedArray[0].length; i++) {
         const element = savedArray[0][i];
+
+        if(savedArray[0][i].primary_photo_cropped){console.log(true) 
+        }else {console.log(false)
+         savedArray[0][i].primary_photo_cropped = ('#missing_image.jpeg')}
         
       appendingContainer.append(` <div class="card column  savedCards text-align:center">
       <img id= "cardImage" src= " ${element.primary_photo_cropped.large} " alt="dog image" >
