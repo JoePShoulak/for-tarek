@@ -29,6 +29,8 @@ console.log(sizeInput.val())
 console.log(genderInput.val())
 console.log(kidsInput.val())
 
+window.location.replace("./index2.html")
+
 })
 
 
@@ -75,8 +77,37 @@ function getPetData(data) {
       console.log(savedArray[0][0].name)
       console.log(savedArray[0].length)
 
-      generateCards()
-
+      setTimeout(() => {
+        console.log("trying a timeout")
+      }, 10)
+    
+    
+      let appendingContainer = $('.cardRow')
+      
+      for (let i = 0; i < savedArray[0].length; i++) {
+        const element = savedArray[0][i];
+        
+        
+      
+      appendingContainer.append(` <div class="card column  savedCards text-align:center">
+      <img id= "cardImage" src="${element.primary_photo_cropped.small}" alt="Avatar" >
+      <div class="container saved-group">
+        <h4 class="saved-group" ><b>${element.name.length < 10 ? element.name : element.name.slice(0, 10)+'...'}</b></h4>
+        <p class="saved-group2" >${element.breeds.primary}</p>
+      </div>
+      <ul class="list-group saved-group list-group-flush">
+        <li class="list-group-item saved-group">${ element.age === 'baby' ? 'puppy' : element.age } </li>
+        <li class="list-group-item saved-group">${element.distance.toFixed(0)} Miles away</li>
+      </ul>
+      <div class="card-body saved-group">
+        <a href="#" class="card-link saved-group">Save</a>
+        <a href=${element.url} target="_blank" class="card-link saved-group">Info</a>
+      </div>
+    </div>`)
+      
+      }
+    
+     
       // generateCards()
     })
 }
@@ -87,31 +118,3 @@ function getPetData(data) {
 // console.log(savedArray[0].animals) //Gives error for some reason
 // const parsedArray = JSON.parse(savedArray)
 
-function generateCards(savedArray) {
-
-  const appendingContainer = $('.cardRow')
-  
-  for (let i = 0; i < savedArray[0].length; i++) {
-    const element = savedArray[0][i];
-    
-  
-  appendingContainer.append(` <div class="card column  savedCards text-align:center">
-  <img id= "cardImage" src="${element.photos[0].small}" alt="Avatar" >
-  <div class="container">
-    <h4><b>Pip</b></h4>
-    <p>Labrador Retriever</p>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Puppy</li>
-    <li class="list-group-item">38 Miles away</li>
-  </ul>
-  <div class="card-body">
-    <a href="#" class="card-link">Save</a>
-    <a href="#" class="card-link">Info</a>
-  </div>
-  </div>`)
-  
-  }
-  }
-
-// generateCards()

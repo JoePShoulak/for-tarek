@@ -29,9 +29,11 @@ img {
 }
 
 #cardImage {
-  width: 85%, fit-content;
+  width: fit-content;
   padding-top: 3%;
   border-radius: 5%;
+  max-height: 180px;
+  max-width: 175px;
 }
 
 .maincontainer {
@@ -116,6 +118,11 @@ border-radius: 2%;
   padding: 1%;
 }
 
+.saved-group2 {
+  padding: 0px;
+  margin-bottom: 0px;
+}
+
 @media (max-width: 800px) {
   /* CSS that should be displayed if width is equal to or less than 800px goes here */
 
@@ -127,9 +134,17 @@ border-radius: 2%;
 
   .savedCards {
     width: 160px;
+    height: 320px;
     margin: 2%;
     border-radius: 2%;
     text-align: left;
+  }
+
+  #cardImage {
+    max-width: 120px;
+    max-height: 120px;
+    padding-top: 3%;
+    border-radius: 5%;
   }
 
 }
