@@ -5,6 +5,8 @@ let size = 'medium'
 let gender = 'male'
 let good_with_children = true
 const savedArray = []
+const trialArray = []
+console.log(trialArray)
 
 //jQuery DOM element selectors
 let zipcodeInput = $('input:text')
@@ -31,13 +33,21 @@ size = sizeInput.val()
 gender = genderInput.val()
 good_with_children = kidsInput.val()
 
-console.log(zipcodeInput.val())
-console.log(ageInput.val())
-console.log(sizeInput.val())
-console.log(genderInput.val())
-console.log(kidsInput.val())
 
-window.location.replace("./index2.html")
+console.log(zipCode)
+console.log(age)
+console.log(size)
+console.log(gender)
+console.log(good_with_children)
+
+trialArray.push(zipCode)
+trialArray.push(age)
+trialArray.push(size)
+trialArray.push(gender)
+trialArray.push(good_with_children)
+
+console.log(trialArray)
+// window.location.replace("./index2.html")
 
 })
 
