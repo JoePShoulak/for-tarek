@@ -1,3 +1,5 @@
+
+
 .card {
   /* Add shadows to create the "card" effect */
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -83,7 +85,7 @@ img {
   transform: translateY(4px);
 }
 
-nav {
+nav, footer {
   background-color: rgba(82,40,144,255);
   color: white;
 }
@@ -91,6 +93,10 @@ nav {
   color: white;
 }
 
+footer, #footer-link {
+  text-align: center;
+  color: white;
+}
 
 
 li, label {
@@ -123,6 +129,17 @@ border-radius: 2%;
   margin-bottom: 0px;
 }
 
+.cardButton, .cardButtonText {
+  border: 1px solid gba(230,180,102,255);
+  background-color: rgba(82,40,144,255);
+  color: white;
+  display: inline-block;
+  margin-left: 10%;
+  margin-right: 10%;
+  border-radius: 10%;
+}
+
+
 @media (max-width: 800px) {
   /* CSS that should be displayed if width is equal to or less than 800px goes here */
 
@@ -145,6 +162,24 @@ border-radius: 2%;
     max-height: 120px;
     padding-top: 3%;
     border-radius: 5%;
+  }
+
+  footer {
+  width:100%;
+  position: absolute; 
+  bottom:0;
+ 
+  }
+
+  #size, #ages, #gender, #kids, .zipcodeinput {
+    border:rgba(82,40,144,255) 1px solid;
+  } 
+
+  .cardButton, .cardButtonText {
+    margin-left: 7%;
+    margin-right: 7%;
+    margin-top: 6%;
+
   }
 
 }
