@@ -4,9 +4,9 @@ let age = 'baby'
 let size = 'medium'
 let gender = 'male'
 let good_with_children = true
-const savedArray = []
-let trialArray = []
-console.log(trialArray)
+const dataArray = [] //Takes API data and puts into array
+let searchArray = []
+console.log(searchArray)
 
 // //clear search
 // if(localStorage.search){
@@ -54,20 +54,20 @@ console.log(good_with_children)
 if(localStorage.search){
     // localStorage.clear()
 // localStorage.setItem("search", "")
-trialArray = []
+searchArray = []
 }
 
-trialArray.push(zipCode)
-trialArray.push(age)
-trialArray.push(size)
-trialArray.push(gender)
-trialArray.push(good_with_children)
-localStorage.setItem("search", JSON.stringify(trialArray));
+searchArray.push(zipCode)
+searchArray.push(age)
+searchArray.push(size)
+searchArray.push(gender)
+searchArray.push(good_with_children)
+localStorage.setItem("search", JSON.stringify(searchArray));
 
-console.log(trialArray)
+console.log(searchArray)
 
 
-window.location.replace("./index2.html")
+// window.location.replace("./index2.html")
 
 })
 
@@ -90,8 +90,8 @@ function getToken() {
     .then(function (data) {
       // console.log(data)
       // if(localStorage.search){
-      //   trialArray = JSON.parse(localStorage.search)
-      //   console.log(trialArray)}
+      //   searchArray = JSON.parse(localStorage.search)
+      //   console.log(searchArray)}
 
       // convertTrialArray()
       getPetData(data)
@@ -119,10 +119,10 @@ function getPetData(data) {
       
       
       // console.log(data.animals) //consoles properly. it works
-      savedArray.push(data.animals) //it pushes to empty array
-      console.log(savedArray[0][1].primary_photo_cropped)
-      console.log(savedArray[0][0].name)
-      console.log(savedArray[0].length)
+      dataArray.push(data.animals) //it pushes to empty array
+      console.log(dataArray[0][1].primary_photo_cropped)
+      console.log(dataArray[0][0].name)
+      console.log(dataArray[0].length)
 
       setTimeout(() => {
         console.log("trying a timeout")
@@ -132,12 +132,12 @@ function getPetData(data) {
       let appendingContainer = $('.cardRow')
       
       
-      for (let i = 0; i < savedArray[0].length; i++) {
-        const element = savedArray[0][i];
+      for (let i = 0; i < dataArray[0].length; i++) {
+        const element = dataArray[0][i];
 
-        if(savedArray[0][i].primary_photo_cropped){console.log(true) 
+        if(dataArray[0][i].primary_photo_cropped){console.log(true) 
         }else {console.log(false)
-         savedArray[0][i].primary_photo_cropped = ('#missing_image.jpeg')}
+         dataArray[0][i].primary_photo_cropped = ('./missing_image.jpeg')}
         
       appendingContainer.append(` <div class="card column  savedCards text-align:center">
       <img id= "cardImage" src= " ${element.primary_photo_cropped.large} " alt="dog image" >
@@ -158,18 +158,18 @@ function getPetData(data) {
       }
     
      
-      // generateCards()
+      
     })
 }
 
 
 function convertTrialArray() {
-zipCode = trialArray[0]
-age = trialArray[1]
-size = trialArray[2]
-gender = trialArray[3]
-good_with_children = trialArray[4]
+zipCode = searchArray[0]
+age = searchArray[1]
+size = searchArray[2]
+gender = searchArray[3]
+good_with_children = searchArray[4]
 
-console.log(trialArray)
+console.log(searchArray)
 }
 
