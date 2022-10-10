@@ -1,8 +1,8 @@
 //Global trial zipcode:
 let zipCode = 55432
-let age = 'baby'
+let age = 'baby' //works with multiples
 let size = 'medium'
-let gender = 'male'
+let gender = 'male,female'
 let good_with_children = true
 const dataArray = [] //Takes API data and puts into array
 let searchArray = []
@@ -33,41 +33,45 @@ let kidsInput = $('#kids')
 
 //event listner on search button
 
-searchButton.on('click', function(event){
-console.log(event.target)
+searchButton.on('click', function (event) {
+  console.log(event.target)
+  // console.log(typeof zipcodeInput.val()) //sees a string
+
+  // if(typeof zipcodeInput.val() === 'number') {
+  //   console.log("hell ya")
+  // }
+
+  zipCode = zipcodeInput.val()
+  age = ageInput.val()
+  size = sizeInput.val()
+  gender = genderInput.val()
+  good_with_children = kidsInput.val()
 
 
-zipCode = zipcodeInput.val()
-age = ageInput.val()
-size = sizeInput.val()
-gender = genderInput.val()
-good_with_children = kidsInput.val()
+  console.log(zipCode)
+  console.log(age)
+  console.log(size)
+  console.log(gender)
+  console.log(good_with_children)
 
 
-console.log(zipCode)
-console.log(age)
-console.log(size)
-console.log(gender)
-console.log(good_with_children)
-
-
-if(localStorage.search){
+  if (localStorage.search) {
     // localStorage.clear()
-// localStorage.setItem("search", "")
-searchArray = []
-}
+    // localStorage.setItem("search", "")
+    searchArray = []
+  }
 
-searchArray.push(zipCode)
-searchArray.push(age)
-searchArray.push(size)
-searchArray.push(gender)
-searchArray.push(good_with_children)
-localStorage.setItem("search", JSON.stringify(searchArray));
+  searchArray.push(zipCode)
+  searchArray.push(age)
+  searchArray.push(size)
+  searchArray.push(gender)
+  searchArray.push(good_with_children)
+  localStorage.setItem("search", JSON.stringify(searchArray));
 
-console.log(searchArray)
+  console.log(searchArray)
 
 
-// window.location.replace("./index2.html")
+  // window.location.replace("./index2.html")
 
 })
 
@@ -77,7 +81,7 @@ console.log(searchArray)
 //Api request for token using the general oauth url post request template
 
 function getToken() {
-  fetch('https://api.petfinder.com/v2/oauth2/token', {              
+  fetch('https://api.petfinder.com/v2/oauth2/token', {
     method: 'post',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
@@ -95,7 +99,7 @@ function getToken() {
 
       // convertTrialArray()
       getPetData(data)
-      
+
     })
 }
 
@@ -113,11 +117,11 @@ function getPetData(data) {
     .then(function (response) {
       return response.json();
     })
-    .then(function (data) { 
-      
-  
-      
-      
+    .then(function (data) {
+
+
+
+
       // console.log(data.animals) //consoles properly. it works
       dataArray.push(data.animals) //it pushes to empty array
       console.log(dataArray[0][1].primary_photo_cropped)
@@ -127,23 +131,28 @@ function getPetData(data) {
       setTimeout(() => {
         console.log("trying a timeout")
       }, 10)
-    
-    
+
+
       let appendingContainer = $('.cardRow')
-      
-      
+
+
       for (let i = 0; i < dataArray[0].length; i++) {
         const element = dataArray[0][i];
 
-        if(dataArray[0][i].primary_photo_cropped){console.log(true) 
-        }else {console.log(false)
-         dataArray[0][i].primary_photo_cropped = ('./missing_image.jpeg')}
-        
-      appendingContainer.append(` <div class="card column  savedCards text-align:center">
+        if (dataArray[0][i].primary_photo_cropped) {
+          console.log(true)
+        } else {
+          console.log(false)
+          console.log(dataArray[0][i].primary_photo_cropped);
+          dataArray[0][i].primary_photo_cropped = ('missing_image.jpg')
+        }
+
+        appendingContainer.append(` <div class="card column  savedCards text-align:center">
       <img id= "cardImage" src= " ${element.primary_photo_cropped.large} " alt="dog image" >
+      
       <div class="container saved-group">
-        <h4 class="saved-group" ><b>${element.name.length < 8 ? element.name : element.name.slice(0, 8)+'...'}</b></h4>
-        <p class="saved-group2" >${element.breeds.primary.length < 15 ? element.breeds.primary: element.breeds.primary.slice(0, 15)+'..'}</p>
+        <h4 class="saved-group" ><b>${element.name.length < 8 ? element.name : element.name.slice(0, 8) + '...'}</b></h4>
+        <p class="saved-group2" >${element.breeds.primary.length < 15 ? element.breeds.primary : element.breeds.primary.slice(0, 15) + '..'}</p>
       </div>
       <ul class="list-group saved-group list-group-flush">
         <li class="list-group-item saved-group">${element.age} </li>
@@ -154,22 +163,22 @@ function getPetData(data) {
         <button class= "cardButton"><a class = "cardButtonText" href=${element.url} target="_blank" class="card-link saved-group">Info</a></button>
       </div>
     </div>`)
-      
+
       }
-    
-     
-      
+
+
+
     })
 }
 
 
 function convertTrialArray() {
-zipCode = searchArray[0]
-age = searchArray[1]
-size = searchArray[2]
-gender = searchArray[3]
-good_with_children = searchArray[4]
+  zipCode = searchArray[0]
+  age = searchArray[1]
+  size = searchArray[2]
+  gender = searchArray[3]
+  good_with_children = searchArray[4]
 
-console.log(searchArray)
+  console.log(searchArray)
 }
 

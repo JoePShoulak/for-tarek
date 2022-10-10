@@ -39,6 +39,7 @@ img {
   padding-top: 3%;
   border-radius: 5%;
   max-height: 180px;
+  min-height: 150px;
   max-width: 175px;
 }
 
@@ -144,6 +145,7 @@ border-radius: 2%;
 }
 
 
+
 @media (max-width: 650px) {
   /* CSS that should be displayed if width is equal to or less than 800px goes here */
 
@@ -164,6 +166,7 @@ border-radius: 2%;
   #cardImage {
     max-width: 120px;
     max-height: 120px;
+    min-height: 100px;
     padding-top: 3%;
     border-radius: 5%;
   }
