@@ -10,8 +10,6 @@ const dataArray = [] //Takes API data and puts into array
 let searchArray = []
 
 
-//function to make default page "no prefrence", then save last search
-
 //Api request for token using the general oauth url post request template
 
 function getToken() {
