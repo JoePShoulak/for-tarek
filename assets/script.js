@@ -5,8 +5,18 @@ let size = 'medium'
 let gender = 'male'
 let good_with_children = true
 const savedArray = []
-const trialArray = []
+let trialArray = []
 console.log(trialArray)
+
+// //clear search
+// if(localStorage.search){
+//   localStorage.clear()
+// }
+
+
+
+
+
 
 //jQuery DOM element selectors
 let zipcodeInput = $('input:text')
@@ -40,14 +50,24 @@ console.log(size)
 console.log(gender)
 console.log(good_with_children)
 
+
+if(localStorage.search){
+    // localStorage.clear()
+// localStorage.setItem("search", "")
+trialArray = []
+}
+
 trialArray.push(zipCode)
 trialArray.push(age)
 trialArray.push(size)
 trialArray.push(gender)
 trialArray.push(good_with_children)
+localStorage.setItem("search", JSON.stringify(trialArray));
 
 console.log(trialArray)
-// window.location.replace("./index2.html")
+
+
+window.location.replace("./index2.html")
 
 })
 
@@ -69,6 +89,11 @@ function getToken() {
     })
     .then(function (data) {
       // console.log(data)
+      // if(localStorage.search){
+      //   trialArray = JSON.parse(localStorage.search)
+      //   console.log(trialArray)}
+
+      // convertTrialArray()
       getPetData(data)
       
     })
@@ -89,6 +114,10 @@ function getPetData(data) {
       return response.json();
     })
     .then(function (data) { 
+      
+  
+      
+      
       // console.log(data.animals) //consoles properly. it works
       savedArray.push(data.animals) //it pushes to empty array
       console.log(savedArray[0][1].primary_photo_cropped)
@@ -134,8 +163,13 @@ function getPetData(data) {
 }
 
 
-// console.log(savedArray)
-// console.log(savedArray[0])
-// console.log(savedArray[0].animals) //Gives error for some reason
-// const parsedArray = JSON.parse(savedArray)
+function convertTrialArray() {
+zipCode = trialArray[0]
+age = trialArray[1]
+size = trialArray[2]
+gender = trialArray[3]
+good_with_children = trialArray[4]
+
+console.log(trialArray)
+}
 

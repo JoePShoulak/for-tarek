@@ -140,7 +140,7 @@ border-radius: 2%;
 }
 
 
-@media (max-width: 800px) {
+@media (max-width: 650px) {
   /* CSS that should be displayed if width is equal to or less than 800px goes here */
 
   .topCard {
