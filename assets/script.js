@@ -1,23 +1,3 @@
-//Global trial zipcode:
-let zipCode = 55432
-let age = 'baby' //works with multiples
-let size = 'medium'
-let gender = 'male,female'
-let good_with_children = true
-const dataArray = [] //Takes API data and puts into array
-let searchArray = []
-console.log(searchArray)
-
-// //clear search
-// if(localStorage.search){
-//   localStorage.clear()
-// }
-
-
-
-
-
-
 //jQuery DOM element selectors
 let zipcodeInput = $('input:text')
 let searchButton = $('.search-button')
@@ -26,26 +6,39 @@ let sizeInput = $('#size')
 let genderInput = $('#gender')
 let kidsInput = $('#kids')
 
+const dataArray = [] //Takes API data and puts into array
+let searchArray = []
 
 
 //function to make default page "no prefrence", then save last search
 
+//Api request for token using the general oauth url post request template
 
-//event listner on search button
+function getToken() {
+  fetch('https://api.petfinder.com/v2/oauth2/token', {
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: 'grant_type=client_credentials&client_id=4qgBwPSpirb0sfhKy4fnxXnZYfXz3oxidw9zGBd5TNfHgu3LDH&client_secret=QtApSseMQP3RoSnLINI3xHaT5TRMRPA1wK7O3aRD'
+  })
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      getPetData(data)
 
-searchButton.on('click', function (event) {
-  console.log(event.target)
-  // console.log(typeof zipcodeInput.val()) //sees a string
+    })
+}
 
-  // if(typeof zipcodeInput.val() === 'number') {
-  //   console.log("hell ya")
-  // }
+//Getting pet data in a json object format
+function getPetData(data) {
 
-  zipCode = zipcodeInput.val()
-  age = ageInput.val()
-  size = sizeInput.val()
-  gender = genderInput.val()
-  good_with_children = kidsInput.val()
+  let zipCode = zipcodeInput.val()
+  let age = ageInput.val()
+  let size = sizeInput.val()
+  let gender = genderInput.val()
+  let good_with_children = kidsInput.val()
 
 
   console.log(zipCode)
@@ -70,45 +63,6 @@ searchButton.on('click', function (event) {
 
   console.log(searchArray)
 
-
-  // window.location.replace("./index2.html")
-
-})
-
-
-
-
-//Api request for token using the general oauth url post request template
-
-function getToken() {
-  fetch('https://api.petfinder.com/v2/oauth2/token', {
-    method: 'post',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    body: 'grant_type=client_credentials&client_id=4qgBwPSpirb0sfhKy4fnxXnZYfXz3oxidw9zGBd5TNfHgu3LDH&client_secret=QtApSseMQP3RoSnLINI3xHaT5TRMRPA1wK7O3aRD'
-  })
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      // console.log(data)
-      // if(localStorage.search){
-      //   searchArray = JSON.parse(localStorage.search)
-      //   console.log(searchArray)}
-
-      // convertTrialArray()
-      getPetData(data)
-
-    })
-}
-
-getToken();
-
-
-//Getting pet data in a json object format
-function getPetData(data) {
-
   fetch(`https://api.petfinder.com/v2/animals?type=Dog&location=${zipCode}&age=${age}&size=${size}&gender=${gender}&good_with_children=${good_with_children}`, {
     headers: {                                          //template for passing access token using Bearer 
       Authorization: `Bearer ${data.access_token}`,
@@ -118,67 +72,32 @@ function getPetData(data) {
       return response.json();
     })
     .then(function (data) {
-
-
-
-
+      console.log(data)
       // console.log(data.animals) //consoles properly. it works
       dataArray.push(data.animals) //it pushes to empty array
-      console.log(dataArray[0][1].primary_photo_cropped)
-      console.log(dataArray[0][0].name)
-      console.log(dataArray[0].length)
-
-      setTimeout(() => {
-        console.log("trying a timeout")
-      }, 10)
+      // console.log(dataArray[0][1].primary_photo_cropped)
+      // console.log(dataArray[0][0].name)
+      // console.log(dataArray[0].length)
+      localStorage.setItem("data", JSON.stringify(dataArray))
 
 
-      let appendingContainer = $('.cardRow')
-
-
-      for (let i = 0; i < dataArray[0].length; i++) {
-        const element = dataArray[0][i];
-
-        if (dataArray[0][i].primary_photo_cropped) {
-          console.log(true)
-        } else {
-          console.log(false)
-          console.log(dataArray[0][i].primary_photo_cropped);
-          dataArray[0][i].primary_photo_cropped = ('missing_image.jpg')
-        }
-
-        appendingContainer.append(` <div class="card column  savedCards text-align:center">
-      <img id= "cardImage" src= " ${element.primary_photo_cropped.large} " alt="dog image" >
+      window.location.replace("./index2.html")
       
-      <div class="container saved-group">
-        <h4 class="saved-group" ><b>${element.name.length < 8 ? element.name : element.name.slice(0, 8) + '...'}</b></h4>
-        <p class="saved-group2" >${element.breeds.primary.length < 15 ? element.breeds.primary : element.breeds.primary.slice(0, 15) + '..'}</p>
-      </div>
-      <ul class="list-group saved-group list-group-flush">
-        <li class="list-group-item saved-group">${element.age} </li>
-        <li class="list-group-item saved-group">${element.distance.toFixed(0)} Miles away</li>
-      </ul>
-      <div class="card-body saved-group">
-        <button class= "cardButton"><a class = "cardButtonText" href="#" class="card-link saved-group">Save</a></button>
-        <button class= "cardButton"><a class = "cardButtonText" href=${element.url} target="_blank" class="card-link saved-group">Info</a></button>
-      </div>
-    </div>`)
-
-      }
-
-
-
     })
 }
 
 
-function convertTrialArray() {
-  zipCode = searchArray[0]
-  age = searchArray[1]
-  size = searchArray[2]
-  gender = searchArray[3]
-  good_with_children = searchArray[4]
-
-  console.log(searchArray)
+function init() {
+ let searchRetrieve = JSON.parse(localStorage.getItem("search")) || []
+zipcodeInput.val(searchRetrieve[0])
+ageInput.val(searchRetrieve[1])
+sizeInput.val(searchRetrieve[2])
+genderInput.val(searchRetrieve[3])
+kidsInput.val(searchRetrieve[4])
 }
 
+init()
+
+
+//event listner on search button
+searchButton.on('click', getToken)
