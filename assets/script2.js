@@ -22,8 +22,7 @@ function displayCards() {
       console.log(true)
     } else {
       console.log(false)
-      console.log(localDataArray[0][i].primary_photo_cropped);
-      localDataArray[0][i].primary_photo_cropped = ('missing_image.jpg')
+      element.primary_photo_cropped = ('missing_image.jpeg')
     }
 
     appendingContainer.append(` <div class="card column  savedCards text-align:center">
