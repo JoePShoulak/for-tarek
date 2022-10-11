@@ -3,6 +3,10 @@
 //set array into local storage
 //save page different html, when you go to it, do init function(pull local storage)
 
+
+let savedCardArray = []
+
+
 function displayCards() {
 
   let localDataArray = JSON.parse(localStorage.getItem("data"))
@@ -34,12 +38,27 @@ function displayCards() {
     <li class="list-group-item saved-group">${element.distance.toFixed(0)} Miles away</li>
   </ul>
   <div class="card-body saved-group">
-    <button class= "cardButton"><a class = "cardButtonText" href="#" class="card-link saved-group">Save</a></button>
+    <button class= "cardButton cardListner"><a class = "cardButtonText" class="card-link saved-group">Save</a></button>
     <button class= "cardButton"><a class = "cardButtonText" href=${element.url} target="_blank" class="card-link saved-group">Info</a></button>
   </div>
 </div>`)
 
   }
+  let cardListner = $('.cardListner')
+  //card listner for save 
+  
+  cardListner.css("border", "red 5px solid")
+  cardListner.on('click', function(event){
+    console.log(event.target)
+   
+  })
+  
+
+
+
+
 }
+
+
 
 displayCards();
