@@ -7,6 +7,7 @@
 let savedCardArray = []
 
 
+
 function displayCards() {
 
   let localDataArray = JSON.parse(localStorage.getItem("data"))
@@ -22,7 +23,7 @@ function displayCards() {
       console.log(true)
     } else {
       console.log(false)
-      element.primary_photo_cropped = ('missing_image.jpeg')
+      element.primary_photo_cropped= ('missing_image_soon.jpg')
     }
 
     appendingContainer.append(` <div class="card column  savedCards text-align:center">
@@ -43,12 +44,16 @@ function displayCards() {
 </div>`)
 
   }
+
   let cardListner = $('.cardListner')
-  //card listner for save 
-  
+//card listner for save 
+
+
   cardListner.css("border", "red 5px solid")
   cardListner.on('click', function(event){
     console.log(event.target)
+    console.log(element.age)
+
    
   })
   
