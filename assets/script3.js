@@ -3,23 +3,20 @@
 //set array into local storage
 //save page different html, when you go to it, do init function(pull local storage)
 
+console.log("hello")
 
-let savedCardArray = [] 
+function displaySavedCards() {
 
-
-
-function displayCards() {
-
-  let localDataArray = JSON.parse(localStorage.getItem("data"))
-  console.log(localDataArray)
+  let localSavedDataArray = JSON.parse(localStorage.getItem("saved"))
+  console.log(localSavedDataArray)
 
 
   let appendingContainer = $('.cardRow')
 
-  for (let i = 0; i < localDataArray[0].length; i++) {
-    const element = localDataArray[0][i];
+  for (let i = 0; i < localSavedDataArray.length; i++) {
+    const element = localSavedDataArray[i];
 
-    if (localDataArray[0][i].primary_photo_cropped) {
+    if (localSavedDataArray[i].primary_photo_cropped) {
       console.log(true)
     } else {
       console.log(false)
@@ -45,24 +42,24 @@ function displayCards() {
 
   }
 
-  let cardListner = $('.cardListner')
-//card listner for save 
+//   let cardListner = $('.cardListner')
+// //card listner for save 
 
 
   
-  cardListner.on('click', function(event){
-    console.log($(this).attr("data-index"))
-    let savedIndex = $(this).attr("data-index")
-    let savedData = localDataArray[0][+savedIndex]
-    savedCardArray.push(savedData)
-    console.log(savedCardArray)
-    localStorage.setItem("saved", JSON.stringify(savedCardArray));
+//   cardListner.on('click', function(event){
+//     console.log($(this).attr("data-index"))
+//     let savedIndex = $(this).attr("data-index")
+//     let savedData = localDataArray[0][+savedIndex]
+//     savedCardArray.push(savedData)
+//     console.log(savedCardArray)
+//     localStorage.setItem("saved", JSON.stringify(savedCardArray));
 
 
-  })
+//   })
   
 }
 
 
 
-displayCards();
+displaySavedCards();
