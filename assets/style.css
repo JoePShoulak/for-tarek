@@ -85,6 +85,13 @@ img {
   color: white;
 }
 
+.back-button, #backID {
+  background-color: rgba(82,40,144,255);
+  border-radius: 5%;
+  width: 15%;
+  color: white;
+}
+
 .search-button:active {
   box-shadow: 0 5px gba(230,180,102,255);
   transform: translateY(4px);
