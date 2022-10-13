@@ -23,11 +23,11 @@ function displayCards() {
       console.log(true)
     } else {
       console.log(false)
-      element.primary_photo_cropped= ('missing_image_soon.jpg')
+      element.primary_photo_cropped= ('./assets/images/comingsoon.jpg')
     }
-
+    //Add comment explaining what we are appending
     appendingContainer.append(` <div class="card column  savedCards text-align:center">
-  <img id= "cardImage" src= " ${element.primary_photo_cropped.large} " alt="dog image" >
+  <img id= "cardImage" src= "${element.primary_photo_cropped.large ? element.primary_photo_cropped.large : element.primary_photo_cropped}" alt="dog image" >
   
   <div class="container saved-group">
     <h4 class="saved-group" ><b>${element.name.length < 8 ? element.name : element.name.slice(0, 8) + '...'}</b></h4>
@@ -38,8 +38,8 @@ function displayCards() {
     <li class="list-group-item saved-group">${element.distance.toFixed(0)} Miles away</li>
   </ul>
   <div class="card-body saved-group">
-    <button class= "cardButton cardListner"><a class = "cardButtonText" class="card-link saved-group">Save</a></button>
-    <button class= "cardButton"><a class = "cardButtonText" href=${element.url} target="_blank" class="card-link saved-group">Info</a></button>
+    <button data-index=${i} class= "cardButton cardListner"><a class = "cardButtonText" class="card-link saved-group">Save</a></button>
+    <button class= "cardButton "><a class = "cardButtonText" href=${element.url} target="_blank" class="card-link saved-group">Info</a></button>
   </div>
 </div>`)
 
@@ -49,18 +49,15 @@ function displayCards() {
 //card listner for save 
 
 
-  cardListner.css("border", "red 5px solid")
+  
   cardListner.on('click', function(event){
-    console.log(event.target)
-    console.log(element.age)
+    console.log($(this).attr("data-index"))
+    let savedIndex = $(this).attr("data-index")
+    let savedData = localDataArray[0][+savedIndex]
+    console.log(savedData)
 
-   
   })
   
-
-
-
-
 }
 
 
