@@ -1,32 +1,18 @@
-//add event listener
-//everytime you click save, pushes object into global object
-//set array into local storage
-//save page different html, when you go to it, do init function(pull local storage)
-
-
 let savedCardArray = [] 
+
 if (localStorage.getItem("saved")) {
   savedCardArray = localStorage.getItem("saved");
-
 } 
 
-
-
 function displayCards() {
-
   let localDataArray = JSON.parse(localStorage.getItem("data"))
-  console.log(localDataArray)
-
 
   let appendingContainer = $('.cardRow')
 
-  for (let i = 0; i < localDataArray[0].length; i++) {
-    const element = localDataArray[0][i];
-
-    if (localDataArray[0][i].primary_photo_cropped) {
-      console.log(true)
+  localDataArray[0].forEach(element => {
+    if (element.primary_photo_cropped) {
+      // TODO: Fix this
     } else {
-      console.log(false)
       element.primary_photo_cropped= ('./assets/images/comingsoon.jpg')
     }
     //Add comment explaining what we are appending
@@ -46,31 +32,21 @@ function displayCards() {
     <button class= "cardButton "><a class = "cardButtonText" href=${element.url} target="_blank" class="card-link saved-group">Info</a></button>
   </div>
 </div>`)
-
-  }
+  })
 
   let cardListner = $('.cardListner')
-//card listner for save 
 
-
-  
-  cardListner.on('click', function(event){
-    console.log($(this).attr("data-index"))
+  function saveFavorite(event) {
     let savedIndex = $(this).attr("data-index")
     let savedData = localDataArray[0][+savedIndex]
+
     savedCardArray.push(savedData)
-    console.log(savedCardArray)
-
-
     
-
     localStorage.setItem("saved", JSON.stringify(savedCardArray));
+  }
 
-
-  })
+  cardListner.on('click', saveFavorite)
   
 }
-
-
 
 displayCards();
