@@ -7,6 +7,7 @@
 let savedCardArray = [] 
 if (localStorage.getItem("saved")) {
   savedCardArray = localStorage.getItem("saved");
+
 } 
 
 
