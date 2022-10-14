@@ -49,7 +49,7 @@ function cutoff(text, index) {
     return  text.length < index ? text : text.slice(0, index) + '...';
 }
 
-function newCard(element) {
+function newCard(element, i) {
     return ` <div class="card column  savedCards text-align:center">
     <img id= "cardImage" src= "${element.primary_photo_cropped.large ? element.primary_photo_cropped.large : element.primary_photo_cropped}" alt="dog image" >
     

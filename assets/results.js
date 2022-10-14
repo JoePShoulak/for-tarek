@@ -16,20 +16,23 @@ function displayCards() {
       element.primary_photo_cropped= ('./assets/images/comingsoon.jpg')
     }
     //Add comment explaining what we are appending
-    appendingContainer.append(newCard(element));
+    appendingContainer.append(newCard(element, i));
   })
 
 }
 
 function saveFavorite() {
   let savedIndex = $(this).attr("data-index")
+  console.log("saveFavorite got called")
   let savedData = localDataArray[0][+savedIndex]
+
+  console.log(savedData)
 
   savedCardArray.push(savedData)
   
   localStorage.setItem("saved", JSON.stringify(savedCardArray));
 }
 
-cardListner.on('click', saveFavorite)
+$('.cardListner').on('click', saveFavorite)
   
 displayCards();

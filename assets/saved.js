@@ -9,7 +9,7 @@ function displaySavedCards() {
       element.primary_photo_cropped = ('./assets/images/comingsoon.jpg')
     }
     //Add comment explaining what we are appending
-    appendingContainer.append(newCard(element))
+    appendingContainer.append(newCard(element, i))
   });
 }
 
