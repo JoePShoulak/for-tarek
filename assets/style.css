@@ -86,10 +86,12 @@ img {
 }
 
 .back-button, #backID {
-  background-color: rgba(82,40,144,255);
+  color: rgba(82,40,144,255);
   border-radius: 5%;
   width: 15%;
-  color: white;
+  background-color: white;
+  margin-left: 1%;
+  margin-right: 1%;
 }
 
 .search-button:active {
@@ -196,4 +198,12 @@ border-radius: 2%;
 
   }
 
+
+
+  .back-button, #backID {
+    color: rgba(82,40,144,255);
+    border-radius: 5%;
+    width: 45%;
+    background-color: white;
+  }
 }

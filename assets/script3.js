@@ -1,9 +1,4 @@
-//add event listener
-//everytime you click save, pushes object into global object
-//set array into local storage
-//save page different html, when you go to it, do init function(pull local storage)
 
-console.log("hello")
 
 function displaySavedCards() {
 
@@ -42,21 +37,16 @@ function displaySavedCards() {
 
   }
 
-//   let cardListner = $('.cardListner')
-// //card listner for save 
+  let clearListner = $('#clearID')
+//card listner for save 
 
 
   
-//   cardListner.on('click', function(event){
-//     console.log($(this).attr("data-index"))
-//     let savedIndex = $(this).attr("data-index")
-//     let savedData = localDataArray[0][+savedIndex]
-//     savedCardArray.push(savedData)
-//     console.log(savedCardArray)
-//     localStorage.setItem("saved", JSON.stringify(savedCardArray));
-
-
-//   })
+  clearListner.on('click', function(event){
+    console.log(event.target);
+    localStorage.removeItem("saved");
+    location.reload();
+  })
   
 }
 
